@@ -35,5 +35,7 @@ O syrius está disponível no npm para poder fazer a instalação
 ### Relacionados
 
 https://github.com/Intern-Yago/Syrius_CLI
+
 https://www.youtube.com/watch?v=Rt-xG_VzD6M
+
 https://github.com/infinitered/gluegun/tree/master/docs
