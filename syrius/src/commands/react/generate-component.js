@@ -1,6 +1,6 @@
 module.exports={
     name: 'generate:component',
-    description: 'Create new component react inside src/component',
+    description: 'Create new component react',
     run: async toolbox=>{
         const {
             parameters,

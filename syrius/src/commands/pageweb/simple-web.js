@@ -1,5 +1,5 @@
 module.exports={
-    name: 'create:simple',
+    name: 'simple',
     description: 'Create new page react',
     run: async toolbox=>{
         const {
