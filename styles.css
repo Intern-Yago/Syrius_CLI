@@ -1,32 +1,182 @@
 @charset "UTF-8";
+/* GERAL */
 html{
+    scroll-behavior: smooth;
     overflow-x: hidden;
+    
 }
-
 *{
     padding: 0;
     margin: 0;
 }
-
+a{
+    color: #6b6b6b;
+    font-weight: bold;
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+/*HEADER*/
+header{
+    background-color: #323232;
+    height: 20vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0 25px;
+}
+header img{
+    width: 6%;
+    transition: all .5s ease-in;
+}
+header img:hover{
+    transform: rotate(360deg);
+}
+/*NAVBAR*/
+nav{
+    width: 100%;
+    height: 100%;
+}
 nav ul{
+    max-width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     list-style: none;
+    
     justify-content: flex-end;
     align-items: center;
-    margin-right: 50px;
-    margin-top: 20px;
 }
-nav ul li{
-    margin-right: 20px;
+
+/*Botões*/
+.nav-button{
+    padding: 0 15px;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    border-bottom: 1px solid rgb(255, 255, 255);
+    overflow: hidden;
+    cursor: pointer;
 }
+.nav-button::before{
+    content: "";
+    width: 100%;
+    height: 100%;
+  
+    position: absolute;
+  
+    background: rgb(255, 255, 255);
+  
+    transition: all .5s;
+    z-index: 0;
+}
+.nav-button::before{
+  width: 100%;
+  height: 100%;
+
+  top: 0;
+  left: 0;
+
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 250ms ease-in;
+  
+}
+.nav-button:hover::before{
+  transform: scaleY(1);
+  transform-origin: bottom;
+}
+
+/*Texto dos botões*/
+.nav-text{
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    font-size: 21px;
+    line-height: 28px;
+    font-weight: 300;
+    padding: 10px 50%;
+    color: #ffffff;
+}
+.nav-text:hover{
+    text-decoration: none;
+    color: #323232;
+}
+/*-----------------------*/
+
+/*PRINCIPAL*/
+.sub{
+    margin: 500px 5vw;
+    scroll-margin: 100px;
+}
+
+
+/*Sobre*/
+#sobre{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px;
+}
+#sobre img{
+    width: 20vw;
+}
+#sobre h1{
+    margin: 20px 0;
+}
+#sobre p {
+    text-align: center;
+}
+
+/*Doc*/
+
+/*Footer*/
+
+footer{
+    width: 100%;
+    font-style: italic;
+    margin-top: 50px;
+    color: white;
+    background-color: #323232;
+    text-align: center;
+    padding: 15px;
+}
+#contato img{
+    width: 25px;
+}
+
+#contato p{
+    margin-top: 8px;
+    margin-bottom: 5px;
+    border-bottom: 1px white solid;
+}
+
+#contato a, .logo{
+    margin-top: 10px;
+    font-weight: 100;
+    color: white;
+    text-decoration: none;
+    transition: all 0.2s ease-in;
+}
+#contato a:hover, #contato a:hover .logo{
+    text-shadow: 0.5px 1px 1px white;
+    text-decoration: underline;
+    font-size: 17px;
+    width: 30px;
+}
+/*ARROW TO TOP*/
 .arrow-top svg{
     user-select: none;
-    width: 50px;
-    height: 50px;
+    width: 4vw;
+    height: 4vw;
+    min-width: 20px;
+    min-height: 20px;
     position: fixed;
-    right:40px;
-    bottom: 40px;
+    right:2vw;
+    bottom: 4vh;
     background: black;
     padding: 10px;
     border-radius: 30px;
@@ -39,7 +189,4 @@ nav ul li{
 .arrow-top.active svg{
     opacity: 1;
     user-select: none;
-}
-main{
-    margin: 0 20px;
 }

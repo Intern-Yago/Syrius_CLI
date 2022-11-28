@@ -4,49 +4,99 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="fav.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="imgs/fav.ico" type="image/x-icon">
     <link rel="stylesheet" href="./styles.css">
     <title>Syrius</title>
 </head>
 <body>
     <header>
+        <img src="imgs/inicial.png" alt="">
         <nav>
             <ul>
-                <li>
-                    <a href="#sobre">        
+                <li class="nav-button">
+                    <a href="#sobre" class="nav-text">
                         Sobre
                     </a>
                 </li>
-                <li>
-                    <a href="#doc">
+                <li class="nav-button">
+                    <a href="#doc" class="nav-text">
                         Documentação
-                    </a>
-                </li>
-                <li>
-                    <a href="#demo">
-                        Mostruário
                     </a>
                 </li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <h1>
-            I'm, Syrius, The CLI
-        </h1>
-        <div id="sobre">
-            <h2>About</h2>
+        <div id="sobre" class="sub">
+            <img src="imgs/logoSF.png" alt="">
+            <h1>
+                Syrius
+            </h1>
+            <p>Sou uma CLI feita por <a href="https://github.com/Intern-Yago" target="_blank">Intern-Yago</a></p>
+            <p>Minha finalidade foi agilizar o proesso de criação de certos arquivos, para não perder tempo</p>
+            <p>Versátil e tenho meus diretórios padrões para criação, mas caso queira escolher a pasta, criar em uma pasta já existe<br/> ou até mesmo decidir o nome do arquivo... eu compreendo, basta acessar minha <a href="#doc">documentação</a> e estará tudo explicado.</p>
+            <p>Mas se precisar de uma <a href="#demo">demonstração</a> basta navegar até a respectiva parte neste mesmo website.</p>
         </div>
-        <div id="doc">
-            <h2>Documentação</h2>
-            
-        </div>
-        <div id="demo">
-            <h2>Demonstração</h2>
+        <div id="doc" class="sub">
+            <div id="menu-lateral">
+                <a href="#react">React</a>
+                <a href="#webpage">Páginas web</a>
+                <a href="#git">Arquivos GIT</a>
+            </div>
+            <div id="menu-central">
+                <h2>Documentação</h2>
+                <p><span class="bold">Syrius</span> possui configurações iniciais para páginas web mais simples e mais completas, arquivos git e programas em react</p>
+                <p>Para criação de arquivos com nomes específicos basta colocar como segundo argumento o diretório com o nome do arquivo ou apenas o nome do arquivo</p>
+                <p>Para criar na mesma página basta colocar um "<span class="bold">.</span>" e será adicionado na pasta atual. (É aceito caminho relativo ou absoluto).</p>
+                <p>A pasta default é a <span class="bold">src/</span>, mas com pequenas diferenças q serão esclarecidas nos tópicos</p>
+                <div id="react">
+                    <h3>React</h3>
+                    <p>O modo react do syrius serve para criação de página ou componente indo diretamente para as respectivas pastas:</p>
+                    <p>"src/page/index.jsx" - para páginas</p>
+                    <img src="" alt="Demonstração da criação de pages React">
+                    <p>"src/components/inde.jsx" - ára componentes</p>
+                    <img src="" alt="Demonstração da criação de componentes React">
+                    <p>Este modo já cria automaticamente páginas de estilização no modo de css modules e formata para ter o link no arquivo inicial</p>
+                    <p>Obs.: Ele faz detecção de projeto React ou ReactNative</p>
+                    <img src="" alt="Demonstração da criação de arquivos React Native">
+                    <p>Modo de usar: syrius react &lt;page/component&gt; &lt;diretório&gt;</p>
+                    <h4>Demonstração dos comandos</h4>
+                    <p>syrius react page userList src/page/userList.jsx</p>
+                    <img src="" alt="Criando página na pasta page com nome userList">
+                    <p>syrius react component form .</p>
+                    <img src="" alt="Criando componente na pasta atual e com nome padrão">
+
+                </div>
+                <div id="webpage">
+                    <h3>Páginas Web</h3>
+                </div>
+                <div id="git">
+                    <h3>Arquivos GIT</h3>
+                </div>
+            </div>
+
         </div>
     </main>
+
     <footer>
-        
+        <address id="contato">
+            <p>Copyright &copy; 2022 - by Yago Victor</p>
+                <a href="https://www.linkedin.com/in/yago-victor-0892481b4/" class="slub linkedin" target="_blank"> 
+                    <img src="imgs/linkedin_white.png" alt="logo Linkedin" class="logo">
+                    Yago Victor 
+                </a>
+                <br>
+                <a href="https://github.com/Intern-Yago" class="slub github" target="_blank">
+                    <img src="imgs/git_white.png" alt="logo Github" class="logo git">
+                    Intern-Yago
+                </a>
+                <br> 
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=yago.commercial@gmail.com" target="_blank">
+                    <img src="imgs/gmail_white.png" alt="logo Gmail" class="logo gmail">
+                    yago.commercial@gmail.com
+                </a>
+        </address>
     </footer>
     <a href="#" class="arrow-top">
         <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
