@@ -6,6 +6,11 @@ module.exports = (toolbox)=>{
         return !!package.dependencies['react-native']
     }
 
+    async function hasStyledComponent(){
+        const package = await filesystem.read('package.json', 'json')
+        return !!package.dependencies['styled-components']
+    }
+
     async function createComponent(path, name, type){
         let target = ""
         let targetStyle = ""
@@ -17,11 +22,13 @@ module.exports = (toolbox)=>{
 
         if (!path){
             target = `src/pages/${name}/index.jsx`
-            targetStyle = `src/pages/${name}/styles.module.css`
+            targetStyle = (await isReactNative())
+            ? `src/pages/${name}/styles.js`
+            :`src/pages/${name}/styles.module.css`
+
         }else{
             if(path.includes(".jsx") ||  path.includes(".js")){
                 target = path
-
                 targetStyle = (await isReactNative())
                 ? path.slice(0,-3).replace("index.", "styles.js")
                 :path.slice(0,-3).replace("index.", "styles.module.css")
@@ -37,7 +44,9 @@ module.exports = (toolbox)=>{
 
 
         const componentTemplate = (await isReactNative())
-        ? 'react-native/component/component.jsx.ejs'
+        ? (await hasStyledComponent())
+            ? 'react-native/component/styledComponent/component.jsx.ejs'
+            : 'react-native/component/component.jsx.ejs'
         : 'react/component/component.jsx.ejs'
         await template.generate({
             template:componentTemplate,
@@ -46,12 +55,17 @@ module.exports = (toolbox)=>{
         })
         
         const styleTemplate = (await isReactNative())
-        ? 'react-native/component/styles.js.ejs'
+        ? (await hasStyledComponent())
+            ?'react-native/component/styledComponent/styles.js.ejs'
+            :null
         : 'react/component/styles.module.css.ejs'
-        await template.generate({
-            template:styleTemplate,
-            target: targetStyle
-        })
+        
+        if(styleTemplate){
+            await template.generate({
+                template:styleTemplate,
+                target: targetStyle
+            })
+        }
 
 
         success(`Generated ${name} ${type}`)

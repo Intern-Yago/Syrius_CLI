@@ -1,9 +1,15 @@
 import React from 'react'
-
-//import {Container} from './styles'
+import { View,StyleSheet} from "react-native";
 
 export default function <%= props.name[0].toUpperCase()+props.name.substring(1)%>(){
-   return(
-     <Container/>
-   );
+    return(
+        <View style={styles.container}>
+        </View>
+    );  
 }
+const styles = StyleSheet.create({
+    container:{
+        margin:0,
+        padding:0
+    },
+})
