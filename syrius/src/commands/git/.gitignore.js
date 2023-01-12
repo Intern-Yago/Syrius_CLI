@@ -1,17 +1,13 @@
 module.exports={
     name: 'ignore',
+    alias:['i'],
     description: 'Create initial configure git: .gitignore',
     run: async toolbox=>{
         const {
-            template,
-            print:{success}
+            createGitignore
         } = toolbox
 
-        await template.generate({
-            template:"git/.gitignore.ejs",
-            target: '.gitignore',
-        })
-        success(`Generated git`)
+        await createGitignore()
     },
 
 }

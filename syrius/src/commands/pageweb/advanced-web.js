@@ -1,5 +1,6 @@
 module.exports={
     name: 'advanced',
+    alias: ['adv'],
     description: 'Create new page react',
     run: async toolbox=>{
         const {

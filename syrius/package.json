@@ -1,6 +1,6 @@
 {
   "name": "syrius",
-  "version": "0.0.6",
+  "version": "0.1.1",
   "description": "syrius CLI",
   "bin": {
     "syrius": "bin/syrius"
@@ -21,7 +21,8 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "gluegun": "latest"
+    "gluegun": "latest",
+    "prompt-sync": "^4.2.0"
   },
   "devDependencies": {
     "copyfiles": "^2.4.1",

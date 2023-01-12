@@ -1,5 +1,6 @@
 module.exports={
     name: 'list:license',
+    alias:['ll'],
     description: 'List possibles licenses',
     run: async toolbox=>{
         const verde = "\033[0;32m"

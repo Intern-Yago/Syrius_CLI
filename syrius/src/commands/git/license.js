@@ -1,5 +1,6 @@
 module.exports={
     name: 'license',
+    alias:['l'],
     description: 'Create initial configure git: LICENSE',
     run: async toolbox=>{
         const {
@@ -8,7 +9,7 @@ module.exports={
             print:{success, error}
         } = toolbox
 
-        const nameLicense = parameters.first.toUpperCase()
+        const nameLicense = parameters.first?.toUpperCase()
         const licenses = ["MIT", "ISC", "GNU", "APACHE"]
         if (!nameLicense ||  licenses.indexOf(nameLicense) <= -1){
             error("License must be specified!")

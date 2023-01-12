@@ -1,4 +1,4 @@
-# <%= props.name %>
+# syrius
 
 Uma breve descrição sobre o que esse projeto faz e para quem ele é
 
@@ -19,10 +19,10 @@ documentação: program -h
 Insira um gif ou um link de alguma demonstração
 
 
-[![ <%= props.nameLicense%> License](https://img.shields.io/badge/License-<%= props.nameLicense%>-green.svg)](https://choosealicense.com/licenses/<%= props.nameLicense%>/)
+[![ APACHE License](https://img.shields.io/badge/License-APACHE-green.svg)](https://choosealicense.com/licenses/APACHE/)
 
 ## Autores
 
-- [@<%= props.author %>](https://www.github.com/<%= props.author %>)
+- [@intern-yago](https://www.github.com/intern-yago)
 
 
