@@ -12,9 +12,9 @@ git : Inicializador para códigos de criação de arquivos git
 
 git ignore : Cria arquivo .gitignore
 
-git license : Cria arquivo de licença MIT
+git license : Cria arquivo de licenças diversas
 
-git readme : Cria readme com estilização default(Necessita do nome do projeto e do autor)
+git readme : Cria readme (Necessita do nome do projeto e do autor)
 
 ---
 ---
