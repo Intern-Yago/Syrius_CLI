@@ -2,6 +2,7 @@
   "name": "syrius",
   "version": "0.1.1",
   "description": "syrius CLI",
+  "private": true,
   "bin": {
     "syrius": "bin/syrius"
   },
