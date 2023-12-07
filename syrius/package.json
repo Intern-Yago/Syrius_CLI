@@ -1,7 +1,7 @@
 {
   "name": "syrius",
-  "version": "0.1.2",
-  "description": "2yrius CLI",
+  "version": "0.1.4",
+  "description": "Syrius CLI",
   "bin": {
     "syrius": "bin/syrius"
   },

@@ -1,5 +1,5 @@
 module.exports = (toolbox)=>{
-    const {template, print:{success, error, muted, highlight}} = toolbox
+    const {template, patching, print:{success, error, muted, highlight}} = toolbox
     async function createFilesPWA(name,path){
         let sucessos = []
         async function generateSWInit(path){
@@ -34,6 +34,13 @@ module.exports = (toolbox)=>{
         }
         await generateManifest(name, path)
 
+        async function editIndex(){
+            patching.patch('index.html', {insert: '<link rel="manifest" href="manifest.json">', after: '<head>'})
+            muted("Index html mudado com sucesso")
+            sucessos.push('index')
+        }
+        await editIndex()
+
         if(sucessos.length >=3){
             success("PWA gerado com sucesso")
             highlight("Faça alterações necessárias no manifest")
@@ -46,6 +53,9 @@ module.exports = (toolbox)=>{
             }
             else if(!('Init' in sucesso)){
                 error('Falha na criação do SW init')
+            }
+            else if(!('index' in sucesso)){
+                error('Falha na edição do index.html')
             }
             else{
                 error("Erro desconhecido")
