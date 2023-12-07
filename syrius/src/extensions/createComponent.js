@@ -1,5 +1,5 @@
 module.exports = (toolbox)=>{
-    const {filesystem, template, print:{success, error}} = toolbox
+    const {filesystem, template, print:{success, error, warning}} = toolbox
 
     async function isReactNative(){
         const package = await filesystem.read('package.json', 'json')

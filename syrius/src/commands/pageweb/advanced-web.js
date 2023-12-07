@@ -9,8 +9,8 @@ module.exports={
             template
         } = toolbox
 
-        const name = parameters.first
-        const path = parameters.second
+        const name = parameters.options.name
+        const path = parameters.options.path
         let targetScripts = ""
         let targetAbout = ""
 

@@ -1,6 +1,6 @@
 const fs = require('fs')
 module.exports = (toolbox)=>{
-    const {filesystem, template, print:{success, error, info}} = toolbox
+    const {filesystem, template, print:{success, muted}} = toolbox
 
     async function createGitignore(){
 
@@ -13,15 +13,15 @@ module.exports = (toolbox)=>{
         switch (language){
             case "node":
                 modelo = "git/gitignore/node.ejs"
-                info("Gitignore node generated");
+                muted("Gitignore node generated");
                 break
             case "python":
                 modelo = "git/gitignore/python.ejs"
-                info("Gitignore python generated");
+                muted("Gitignore python generated");
                 break
             default:
                 modelo = "git/gitignore/node.ejs"
-                info("Gitignore node generated");
+                muted("Gitignore node generated");
             
         }
 

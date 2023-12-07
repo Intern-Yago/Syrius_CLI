@@ -8,8 +8,8 @@ module.exports={
             createWeb
         } = toolbox
 
-        const name = parameters.first
-        const path = parameters.second
+        const name = parameters.options.name
+        const path = parameters.options.path
 
         await createWeb(path, name, 'simple')
         

@@ -8,7 +8,7 @@ module.exports = {
       print: { info },
     } = toolbox
 
-    const name = parameters.first
+    const name = parameters.options.name
 
     await template.generate({
       template: 'model.js.ejs',

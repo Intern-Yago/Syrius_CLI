@@ -1,5 +1,5 @@
 module.exports = (toolbox)=>{
-    const {template, print:{success, error}} = toolbox
+    const {template, print:{success, error,warning}} = toolbox
 
     
     async function createWeb(path, name, type){

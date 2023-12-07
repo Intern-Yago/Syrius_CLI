@@ -11,7 +11,7 @@ module.exports={
             parameters,
             template,
             filesystem,
-            print:{success, error, info}
+            print:{success, error, warning}
         } = toolbox
 
 
@@ -19,20 +19,20 @@ module.exports={
             return !!fs.existsSync("LICENSE")
         }
 
-        const author = parameters.first
-        const name = parameters.second
-        var nameLicense = parameters.third
+        const author = parameters.options.author
+        const name = parameters.options.name
+        var nameLicense = parameters.nameLicense
 
         if(!nameLicense){
             if(hasLicense()){
                 nameLicense = prompt("Qual o nome da licensa usada? ").trim()
 
                 if(!nameLicense){
-                    info("License not informed... Continue whithout this")
+                    warning("License not informed... Continue whithout this")
                 }
             }
             else{
-                info("License not informed... Continue whithout this")
+                warning("License not informed... Continue whithout this")
             }
         }
 
