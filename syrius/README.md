@@ -18,12 +18,6 @@ npm install -g syrius
 
 ---
 
-## 🌐 Documentação Interativa Web
-
-Acesse a página de documentação oficial em [index.html](index.html) para explorar o **Playground Interativo**, simulador de terminal e busca rápida de comandos.
-
----
-
 ## 🧙‍♂️ Modo Interativo (Wizard)
 
 Basta executar o comando sem argumentos para abrir o **assistente interativo completo** com menu contínuo (digite `:q` a qualquer momento para retornar ao menu principal):
