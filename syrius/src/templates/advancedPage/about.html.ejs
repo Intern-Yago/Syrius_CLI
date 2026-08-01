@@ -1,43 +1,41 @@
-
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.es.gov.br/fonts/font-awesome/css/font-awesome.min.css">
-    <title>About - <%= props.name[0].toUpperCase()+props.name.substring(1) %></title>
-    <link rel="stylesheet" href="./styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sobre — <%= props.name[0].toUpperCase() + props.name.substring(1) %></title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li>
-                    <a href="./index.html">
-                        Home
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        About
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
-    <main>
-        <h1>About</h1>
-    </main>
-    <footer>
-        
-    </footer>
-    <a href="#" class="arrow-top">
-        <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-            <path d="M214.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 109.3V480c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128z"/>
-        </svg>
-    </a>
-    <script src="./script.js"></script>
+  <header class="header">
+    <div class="container nav-container">
+      <a href="./index.html" class="logo"><%= props.name[0].toUpperCase() + props.name.substring(1) %></a>
+      <nav class="nav">
+        <a href="./index.html">Início</a>
+        <a href="./about.html" class="active">Sobre</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main container">
+    <section class="content-card">
+      <h1>Sobre o Projeto <%= props.name[0].toUpperCase() + props.name.substring(1) %></h1>
+      <p>Esta é uma página de exemplo gerada automaticamente pela <strong>Syrius CLI</strong>.</p>
+      <p>Você pode customizar o layout, adicionar estilos adicionais e incluir novos scripts JS para expandir sua aplicação.</p>
+      <br>
+      <a href="./index.html" class="btn btn-secondary">&larr; Voltar para o Início</a>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 <%= props.name[0].toUpperCase() + props.name.substring(1) %>. Criado com Syrius CLI.</p>
+    </div>
+  </footer>
+
+  <script src="./scripts.js"></script>
 </body>
 </html>

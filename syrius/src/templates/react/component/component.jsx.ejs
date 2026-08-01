@@ -1,11 +1,24 @@
-import React from 'react'
+import React from 'react';
+import styles from './styles.module.css';
 
-import styles from './styles.module.css'
-
-export default function <%= props.name[0].toUpperCase()+props.name.substring(1)%>(){
-   return(
-     <div className={styles.container}>
-
-     </div>
-   );
+/**
+ * <%= props.name[0].toUpperCase() + props.name.substring(1) %> Component
+ * Componente React funcional gerado com Syrius CLI
+ */
+export default function <%= props.name[0].toUpperCase() + props.name.substring(1) %>({
+  title = '<%= props.name[0].toUpperCase() + props.name.substring(1) %>',
+  children,
+  className = '',
+  ...props
+}) {
+  return (
+    <section className={`${styles.container} ${className}`} {...props}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+      </div>
+      <div className={styles.content}>
+        {children || <p><%= props.name %> está funcionando perfeitamente!</p>}
+      </div>
+    </section>
+  );
 }

@@ -1,9 +1,11 @@
-const toTop = document.querySelector(".arrow-top")
-window.addEventListener("scroll", () =>{
-    if(window.pageYOffset > 100){
-        toTop.classList.add('active')
-    }else{
-        toTop.classList.remove('active')
-    }
+// Script de exemplo para <%= props.name %>
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('🚀 Página <%= props.name %> carregada com sucesso via Syrius CLI!');
 
-})
+  const btnAlert = document.getElementById('btn-alert');
+  if (btnAlert) {
+    btnAlert.addEventListener('click', () => {
+      alert('✨ Interatividade JS funcionando perfeitamente em <%= props.name %>!');
+    });
+  }
+});

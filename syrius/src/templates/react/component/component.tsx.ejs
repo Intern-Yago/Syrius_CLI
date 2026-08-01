@@ -1,19 +1,31 @@
 import React from 'react';
 import styles from './styles.module.css';
 
-export interface <%= props.name[0].toUpperCase() + props.name.substring(1) %>Props {
+export interface <%= props.name[0].toUpperCase() + props.name.substring(1) %>Props extends React.HTMLAttributes<HTMLDivElement> {
+  title?: string;
   children?: React.ReactNode;
   className?: string;
 }
 
+/**
+ * <%= props.name[0].toUpperCase() + props.name.substring(1) %> Component (TypeScript)
+ * Componente React com tipagem forte gerado com Syrius CLI
+ */
 export const <%= props.name[0].toUpperCase() + props.name.substring(1) %>: React.FC<<%= props.name[0].toUpperCase() + props.name.substring(1) %>Props> = ({
+  title = '<%= props.name[0].toUpperCase() + props.name.substring(1) %>',
   children,
   className = '',
+  ...props
 }) => {
   return (
-    <div className={`${styles.container} ${className}`}>
-      {children || <span><%= props.name %> Component</span>}
-    </div>
+    <section className={`${styles.container} ${className}`} {...props}>
+      <div className={styles.header}>
+        <h2 className={styles.title}>{title}</h2>
+      </div>
+      <div className={styles.content}>
+        {children || <p><%= props.name %> está funcionando perfeitamente!</p>}
+      </div>
+    </section>
   );
 };
 
