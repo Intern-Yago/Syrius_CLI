@@ -1,5 +1,7 @@
+const { generateFilesEngine } = require('./generateFiles')
+
 module.exports = (toolbox) => {
-  const { filesystem, template, print: { success, error, info }, prompt } = toolbox
+  const { filesystem, print: { error }, prompt } = toolbox
 
   async function isReactNative() {
     const pkg = await filesystem.read('package.json', 'json')
@@ -63,15 +65,19 @@ module.exports = (toolbox) => {
       }
     }
 
+    const filesToGenerate = []
+
     // Check for custom user template in .syrius/
     const customTemplatePath = `.syrius/component.${ext}.ejs`
     const hasCustomTemplate = await filesystem.exists(customTemplatePath)
 
     if (hasCustomTemplate) {
-      info(`⚡ Usando template personalizado do usuário (.syrius/component.${ext}.ejs)`)
       const customContent = await filesystem.read(customTemplatePath)
-      const rendered = template.render(customContent, { props: { name: formattedName } })
-      await filesystem.write(target, rendered)
+      filesToGenerate.push({
+        target,
+        customContent,
+        props: { name: formattedName },
+      })
     } else {
       const componentTemplate = (await isReactNative())
         ? (await hasStyledComponent())
@@ -81,9 +87,9 @@ module.exports = (toolbox) => {
         ? 'react/component/component.tsx.ejs'
         : 'react/component/component.jsx.ejs'
 
-      await template.generate({
+      filesToGenerate.push({
         template: componentTemplate,
-        target: target,
+        target,
         props: { name: formattedName },
       })
     }
@@ -95,15 +101,18 @@ module.exports = (toolbox) => {
       : 'react/component/styles.module.css.ejs'
 
     if (styleTemplate) {
-      await template.generate({
+      filesToGenerate.push({
         template: styleTemplate,
         target: targetStyle,
+        props: { name: formattedName },
       })
     }
 
-    success(`✨ ${type.toUpperCase()} React (${isTs ? 'TypeScript' : 'JavaScript'}) criado com sucesso!`)
-    info(`📁 Arquivo principal: ${target}`)
-    info(`🎨 Arquivo de estilo: ${targetStyle}`)
+    if (toolbox.generateFiles) {
+      await toolbox.generateFiles(filesToGenerate, { force: options.force })
+    } else {
+      await generateFilesEngine(toolbox, filesToGenerate, { force: options.force })
+    }
   }
 
   toolbox.createComponent = createComponent

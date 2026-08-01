@@ -1,54 +1,48 @@
-module.exports = (toolbox)=>{
-    const {template, print:{success, error,warning}} = toolbox
+const { generateFilesEngine } = require('./generateFiles')
 
-    
-    async function createWeb(path, name, type){
-        async function isAdvanced(){
-            if(type==="advanced"){
-                return true
-            }else{
-                return false
-            }
-        }
-        if(!name){
-            error('Name must be specified!')
-            return "error"
-        }
+module.exports = (toolbox) => {
+  const { print: { error } } = toolbox
 
-        if (!path){
-            target = `src/${name}/index.html`
-            targetStyle = `src/${name}/styles.css`
-            
-        }else{
-            if(path.includes(".html")){
-                target = path
-                targetStyle = path.slice(0,-4).replace("index.", "styles.css")
-            }
-            else{
-                target = `${path}/index.html`
-                targetStyle = `${path}/styles.css`
-                
-            }
-        }
+  async function createWeb(path, name, type) {
+    const isAdvanced = type === 'advanced'
 
-        const indexTemplate = (await isAdvanced())
-        ? 'advancedPage/index.html.ejs'
-        : 'simplePage/index.html.ejs'
-        await template.generate({
-            template:indexTemplate,
-            target: target,
-            props:{name}
-        })
-
-        const stylesTemplate = (await isAdvanced())
-        ? 'advancedPage/styles.css.ejs'
-        : 'simplePage/styles.css.ejs'
-        await template.generate({
-            template:stylesTemplate,
-            target: targetStyle,
-        })
-
-    success(`Generated ${name} ${type}`)
+    if (!name) {
+      error('O nome precisa ser especificado!')
+      return 'error'
     }
-    toolbox.createWeb = createWeb
+
+    let target = ''
+    let targetStyle = ''
+
+    if (!path || path === '.') {
+      target = `src/${name}/index.html`
+      targetStyle = `src/${name}/styles.css`
+    } else {
+      if (path.includes('.html')) {
+        target = path
+        targetStyle = path.slice(0, -5).concat('/styles.css')
+      } else {
+        target = `${path}/index.html`
+        targetStyle = `${path}/styles.css`
+      }
+    }
+
+    const filesToGenerate = [
+      {
+        template: isAdvanced ? 'advancedPage/index.html.ejs' : 'simplePage/index.html.ejs',
+        target,
+        props: { name },
+      },
+      {
+        template: isAdvanced ? 'advancedPage/styles.css.ejs' : 'simplePage/styles.css.ejs',
+        target: targetStyle,
+        props: { name },
+      },
+    ]
+
+    const engine = toolbox.generateFiles || generateFilesEngine
+    await engine(toolbox, filesToGenerate)
+  }
+
+  toolbox.createWeb = createWeb
 }
