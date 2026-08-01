@@ -2,7 +2,7 @@
 
 > Ferramenta CLI moderna, ágil e completa para desenvolvedores. Gere componentes React (JS/TS), projetos Web, arquivos Git, Dockerfiles, pipelines de CI/CD e configurações em segundos.
 
-[![npm version](https://img.shields.io/badge/npm-v0.2.0-blue.svg)](https://www.npmjs.com/package/syrius)
+[![npm version](https://img.shields.io/badge/npm-v0.2.1-blue.svg)](https://www.npmjs.com/package/syrius)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![Node.js](https://img.shields.io/badge/Node.js->=14.0.0-green.svg)](https://nodejs.org)
 

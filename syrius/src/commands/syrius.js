@@ -13,7 +13,7 @@ module.exports = {
   `
 
     info(colors.bold.cyan(banner))
-    info(colors.bold.white(' ✨ Syrius CLI - Gerador de Arquivos e Boilerplates Dev (v0.2.0)\n'))
+    info(colors.bold.white(' ✨ Syrius CLI - Gerador de Arquivos e Boilerplates Dev (v0.2.1)\n'))
 
     info(colors.bold.yellow('📌 COMANDOS DISPONÍVEIS:\n'))
 
