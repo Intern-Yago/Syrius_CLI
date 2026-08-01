@@ -1,9 +1,10 @@
 {
-  "name": "syrius",
+  "name": "syrius-cli",
   "version": "0.2.1",
   "description": "Syrius CLI - Ferramenta CLI para geração ágil de componentes React (JS/TS), projetos Web, Docker, CI/CD e arquivos Git",
   "bin": {
-    "syrius": "bin/syrius"
+    "syrius": "bin/syrius",
+    "syrius-cli": "bin/syrius"
   },
   "scripts": {
     "format": "eslint \"**/*.{js,jsx}\" --fix && prettier \"**/*.{js,jsx,json}\" --write",
