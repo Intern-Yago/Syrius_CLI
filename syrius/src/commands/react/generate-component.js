@@ -1,17 +1,14 @@
-module.exports={
-    name: 'generate:component',
-    alias:['gc'],
-    description: 'Create new component react',
-    run: async toolbox=>{
-        const {
-            parameters,
-            createComponent
-        } = toolbox
+module.exports = {
+  name: 'generate:component',
+  alias: ['gc', 'component', 'c'],
+  description: 'Cria um novo componente React (JS/TS)',
+  run: async (toolbox) => {
+    const { parameters, createComponent } = toolbox
 
-        const name = parameters.options.name
-        const path = parameters.options.path
+    const name = parameters.first || parameters.options.name
+    const path = parameters.second || parameters.options.path
+    const isTs = parameters.options.ts || parameters.options.typescript
 
-        await createComponent(path, name, 'component')
-        
-    },
+    await createComponent(path, name, 'component', { ts: isTs })
+  },
 }

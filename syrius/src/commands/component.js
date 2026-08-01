@@ -1,7 +1,7 @@
 module.exports = {
-  name: 'generate:page',
-  alias: ['gp', 'page', 'p'],
-  description: 'Cria uma nova página React (JS/TS)',
+  name: 'component',
+  alias: ['gc', 'c'],
+  description: 'Cria um novo componente React (JS/TS)',
   run: async (toolbox) => {
     const { parameters, createComponent } = toolbox
 
@@ -9,6 +9,6 @@ module.exports = {
     const path = parameters.second || parameters.options.path
     const isTs = parameters.options.ts || parameters.options.typescript
 
-    await createComponent(path, name, 'page', { ts: isTs })
+    await createComponent(path, name, 'component', { ts: isTs })
   },
 }

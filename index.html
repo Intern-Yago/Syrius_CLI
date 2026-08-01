@@ -1,109 +1,471 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="imgs/fav.ico" type="image/x-icon">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Syrius</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="imgs/fav.ico" type="image/x-icon">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <title>Syrius CLI — Documentação Oficial</title>
 </head>
 <body>
-    <header>
-        <img src="imgs/inicial.png" alt="">
-        <nav>
-            <ul>
-                <li class="nav-button">
-                    <a href="#sobre" class="nav-text">
-                        Sobre
-                    </a>
-                </li>
-                <li class="nav-button">
-                    <a href="#doc" class="nav-text">
-                        Documentação
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <div id="sobre" class="sub">
-            <img src="imgs/logoSF.png" alt="">
-            <h1>
-                Syrius
-            </h1>
-            <p>Sou uma CLI feita por <a href="https://github.com/Intern-Yago" target="_blank">Intern-Yago</a></p>
-            <p>Minha finalidade foi agilizar o proesso de criação de certos arquivos, para não perder tempo</p>
-            <p>Versátil e tenho meus diretórios padrões para criação, mas caso queira escolher a pasta, criar em uma pasta já existe<br/> ou até mesmo decidir o nome do arquivo... eu compreendo, basta acessar minha <a href="#doc">documentação</a> e estará tudo explicado.</p>
-            <p>Mas se precisar de uma <a href="#demo">demonstração</a> basta navegar até a respectiva parte neste mesmo website.</p>
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">Comando copiado para a área de transferência!</div>
+
+  <!-- Header / Navbar -->
+  <header class="header">
+    <div class="header-container">
+      <a href="#" class="brand">
+        <img src="imgs/logoSF.png" alt="Syrius Logo" class="brand-logo">
+        <span class="brand-name">Syrius<span class="brand-accent">CLI</span></span>
+        <span class="badge-version">v0.2.0</span>
+      </a>
+
+      <nav class="nav-menu">
+        <a href="#sobre" class="nav-link">Início</a>
+        <a href="#recursos" class="nav-link">Recursos</a>
+        <a href="#doc" class="nav-link">Documentação</a>
+        <a href="#playground" class="nav-link">Playground</a>
+        <a href="https://github.com/Intern-Yago/Syrius_CLI" target="_blank" rel="noopener" class="nav-link github-link">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+          GitHub
+        </a>
+      </nav>
+
+      <div class="quick-install" onclick="copyText('npm install -g syrius')">
+        <span class="prompt-symbol">$</span>
+        <code>npm install -g syrius</code>
+        <button class="copy-btn" title="Copiar comando">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="sobre" class="hero-section">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="pill-tag">✨ Versão 0.2.0 com suporte a TypeScript & Docker</div>
+          <h1 class="hero-title">
+            Crie componentes, projetos e boilerplates <span class="gradient-text">em segundos.</span>
+          </h1>
+          <p class="hero-description">
+            A <strong>Syrius CLI</strong> é uma ferramenta ágil criada para eliminar tarefas repetitivas no fluxo de desenvolvimento: gere componentes React (JS/TS), estruturas Web, arquivos Git, Dockerfiles e pipelines CI/CD com facilidade.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#doc" class="btn btn-primary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              Explorar Documentação
+            </a>
+            <a href="#playground" class="btn btn-secondary">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+              </svg>
+              Testar no Playground
+            </a>
+          </div>
         </div>
-        <div id="doc" class="sub">
-            <div id="menu-lateral">
-                <a href="#react">React</a>
-                <a href="#webpage">Páginas web</a>
-                <a href="#git">Arquivos GIT</a>
-            </div>
-            <div id="menu-central">
-                <h2>Documentação</h2>
-                <p><span class="bold">Syrius</span> possui configurações iniciais para páginas web mais simples e mais completas, arquivos git e programas em react</p>
-                <p>Para criação de arquivos com nomes específicos basta colocar como segundo argumento o diretório com o nome do arquivo ou apenas o nome do arquivo</p>
-                <p>Para criar na mesma página basta colocar um "<span class="bold">.</span>" e será adicionado na pasta atual. (É aceito caminho relativo ou absoluto).</p>
-                <p>A pasta default é a <span class="bold">src/</span>, mas com pequenas diferenças q serão esclarecidas nos tópicos</p>
-                <div id="react">
-                    <h3>React</h3>
-                    <p>O modo react do syrius serve para criação de página ou componente indo diretamente para as respectivas pastas:</p>
-                    <p>"src/page/index.jsx" - para páginas</p>
-                    <img src="" alt="Demonstração da criação de pages React">
-                    <p>"src/components/inde.jsx" - ára componentes</p>
-                    <img src="" alt="Demonstração da criação de componentes React">
-                    <p>Este modo já cria automaticamente páginas de estilização no modo de css modules e formata para ter o link no arquivo inicial</p>
-                    <p>Obs.: Ele faz detecção de projeto React ou ReactNative</p>
-                    <img src="" alt="Demonstração da criação de arquivos React Native">
-                    <p>Modo de usar: syrius react &lt;page/component&gt; &lt;diretório&gt;</p>
-                    <h4>Demonstração dos comandos</h4>
-                    <p>syrius react page userList src/page/userList.jsx</p>
-                    <img src="" alt="Criando página na pasta page com nome userList">
-                    <p>syrius react component form .</p>
-                    <img src="" alt="Criando componente na pasta atual e com nome padrão">
 
-                </div>
-                <div id="webpage">
-                    <h3>Páginas Web</h3>
-                </div>
-                <div id="git">
-                    <h3>Arquivos GIT</h3>
-                </div>
+        <!-- Terminal Window Mockup -->
+        <div class="hero-terminal">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
             </div>
+            <span class="terminal-title">bash — syrius init</span>
+          </div>
+          <div class="terminal-body">
+            <div class="line"><span class="t-green">yago@dev</span>:<span class="t-blue">~/meu-projeto</span>$ syrius init</div>
+            <div class="line t-cyan">🚀 Bem-vindo ao Assistente Interativo do Syrius CLI!</div>
+            <div class="line t-dim">? O que você gostaria de criar ou configurar?</div>
+            <div class="line t-yellow">❯ ⚛️ Componente React (TypeScript)</div>
+            <div class="line t-dim">  📄 Página React</div>
+            <div class="line t-dim">  🐳 Dockerfile + Docker Compose</div>
+            <div class="line"><span class="t-dim">? Nome do componente:</span> <span class="t-green">UserProfile</span></div>
+            <div class="line"><span class="t-dim">? Usar TypeScript?</span> <span class="t-green">Sim (Yes)</span></div>
+            <div class="line t-green">✨ COMPONENT React (TypeScript) criado com sucesso!</div>
+            <div class="line t-dim">📁 Arquivo principal: src/components/UserProfile/index.tsx</div>
+            <div class="line t-dim">🎨 Arquivo de estilo: src/components/UserProfile/styles.module.css</div>
+            <div class="line"><span class="t-green">yago@dev</span>:<span class="t-blue">~/meu-projeto</span>$ <span class="blink">_</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECURSOS DA CLI -->
+    <section id="recursos" class="features-section">
+      <div class="section-header">
+        <h2 class="section-title">Por que usar a Syrius CLI?</h2>
+        <p class="section-subtitle">Construída para acelerar a produtividade com padrões modernos do mercado.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚛️</div>
+          <h3>React & TypeScript</h3>
+          <p>Gere componentes e páginas em JavaScript ou TypeScript formatados com CSS Modules ou Styled Components instantaneamente.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🧙‍♂️</div>
+          <h3>Wizard Interativo</h3>
+          <p>Execute apenas <code>syrius init</code> e navegue pelo menu interativo sem precisar memorizar comandos ou flags complexas.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">🐳</div>
+          <h3>Docker em 1 Clique</h3>
+          <p>Gere <code>Dockerfile</code> e <code>docker-compose.yml</code> otimizados para produção em React, Node.js ou páginas estáticas.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">⚙️</div>
+          <h3>CI/CD com GitHub Actions</h3>
+          <p>Crie pipelines automatizados de lint, build e teste (<code>.github/workflows/ci.yml</code>) com um único comando.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📦</div>
+          <h3>Arquivos Git Automáticos</h3>
+          <p>Instale <code>.gitignore</code> inteligente (Node/Python), <code>README.md</code> estilizado e licenças open-source (MIT, Apache, GPL).</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Pronto para PWA</h3>
+          <p>Gere Service Worker, Web App Manifest e favicons para transformar sua aplicação web em um Progressive Web App.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOCUMENTAÇÃO DETALHADA -->
+    <section id="doc" class="doc-section">
+      <div class="section-header">
+        <h2 class="section-title">Documentação Completa</h2>
+        <p class="section-subtitle">Consulte todos os comandos, aliases, opções e exemplos práticos.</p>
+
+        <!-- Search Bar -->
+        <div class="search-container">
+          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="cmd-search" placeholder="Buscar comando (ex: react, docker, git, ts)..." onkeyup="filterDocs()">
+        </div>
+      </div>
+
+      <div class="doc-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="doc-sidebar">
+          <div class="sidebar-sticky">
+            <span class="sidebar-heading">Categorias</span>
+            <nav class="sidebar-nav">
+              <a href="#doc-init" class="sidebar-link active">⚡ Assistente Wizard</a>
+              <a href="#doc-react" class="sidebar-link">⚛️ React & TS</a>
+              <a href="#doc-webpage" class="sidebar-link">🌐 Páginas Web</a>
+              <a href="#doc-git" class="sidebar-link">📦 Arquivos Git</a>
+              <a href="#doc-docker" class="sidebar-link">🐳 Docker & Compose</a>
+              <a href="#doc-ci" class="sidebar-link">⚙️ CI/CD GitHub</a>
+              <a href="#doc-pwa" class="sidebar-link">📱 Suporte PWA</a>
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <div class="doc-content">
+
+          <!-- INIT WIZARD -->
+          <article id="doc-init" class="doc-block">
+            <div class="doc-block-header">
+              <span class="doc-category">Assistente</span>
+              <h3>syrius init / syrius</h3>
+            </div>
+            <p>Abre o assistente de linha de comando interativo. Permite selecionar visualmente o que você deseja criar sem ter que especificar argumentos.</p>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Terminal</span>
+                <button class="copy-code-btn" onclick="copyText('syrius init')">Copiar</button>
+              </div>
+              <pre><code>syrius init</code></pre>
+            </div>
+          </article>
+
+          <!-- REACT & TS -->
+          <article id="doc-react" class="doc-block">
+            <div class="doc-block-header">
+              <span class="doc-category">React & TypeScript</span>
+              <h3>syrius generate:component / generate:page</h3>
+            </div>
+            <p>Gera arquivos de componente ou página React. Suporta detecção automática de React / React Native e suporte a TypeScript com a flag <code>--ts</code>.</p>
+
+            <table class="doc-table">
+              <thead>
+                <tr>
+                  <th>Comando</th>
+                  <th>Aliases</th>
+                  <th>Flags / Parâmetros</th>
+                  <th>Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>generate:component</code></td>
+                  <td><code>gc</code>, <code>component</code>, <code>c</code></td>
+                  <td><code>[nome]</code>, <code>[caminho]</code>, <code>--ts</code></td>
+                  <td>Cria componente com <code>index.jsx</code> / <code>index.tsx</code> e CSS Module</td>
+                </tr>
+                <tr>
+                  <td><code>generate:page</code></td>
+                  <td><code>gp</code>, <code>page</code>, <code>p</code></td>
+                  <td><code>[nome]</code>, <code>[caminho]</code>, <code>--ts</code></td>
+                  <td>Cria página com <code>index.jsx</code> / <code>index.tsx</code> e CSS Module</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <h4>Exemplos de uso:</h4>
+            <div class="code-box">
+              <div class="code-header">
+                <span>Componente TypeScript</span>
+                <button class="copy-code-btn" onclick="copyText('syrius generate:component Button --ts')">Copiar</button>
+              </div>
+              <pre><code>syrius generate:component Button --ts</code></pre>
+            </div>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Página na pasta atual</span>
+                <button class="copy-code-btn" onclick="copyText('syrius gp Dashboard . --ts')">Copiar</button>
+              </div>
+              <pre><code>syrius gp Dashboard . --ts</code></pre>
+            </div>
+          </article>
+
+          <!-- PÁGINAS WEB -->
+          <article id="doc-webpage" class="doc-block">
+            <div class="doc-block-header">
+              <span class="doc-category">Websites</span>
+              <h3>syrius pageweb simple / advanced</h3>
+            </div>
+            <p>Cria a estrutura base para sites web convencionais em HTML5, CSS3 e JavaScript.</p>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Página Web Simples (index.html + styles.css)</span>
+                <button class="copy-code-btn" onclick="copyText('syrius pageweb simple --name meu-site')">Copiar</button>
+              </div>
+              <pre><code>syrius pageweb simple --name "meu-site"</code></pre>
+            </div>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Página Web Completa (HTML, CSS, JS e About)</span>
+                <button class="copy-code-btn" onclick="copyText('syrius pageweb advanced --name portal')">Copiar</button>
+              </div>
+              <pre><code>syrius pageweb advanced --name "portal"</code></pre>
+            </div>
+          </article>
+
+          <!-- GIT & LICENÇAS -->
+          <article id="doc-git" class="doc-block">
+            <div class="doc-block-header">
+              <span class="doc-category">Git</span>
+              <h3>syrius git ignore / readme / license</h3>
+            </div>
+            <p>Gera arquivos essenciais de repositório Git com padrões predefinidos.</p>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>.gitignore Inteligente (Detecta Node.js ou Python)</span>
+                <button class="copy-code-btn" onclick="copyText('syrius git ignore')">Copiar</button>
+              </div>
+              <pre><code>syrius git ignore</code></pre>
+            </div>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>README.md Profissional</span>
+                <button class="copy-code-btn" onclick="copyText('syrius git readme --name MeuProjeto --author Yago')">Copiar</button>
+              </div>
+              <pre><code>syrius git readme --name "MeuProjeto" --author "Yago"</code></pre>
+            </div>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Licença Open Source (MIT, APACHE, GNU, ISC)</span>
+                <button class="copy-code-btn" onclick="copyText('syrius git license MIT')">Copiar</button>
+              </div>
+              <pre><code>syrius git license MIT</code></pre>
+            </div>
+          </article>
+
+          <!-- DOCKER -->
+          <article id="doc-docker" class="doc-block">
+            <div class="doc-block-header">
+              <span class="doc-category">Containerização</span>
+              <h3>syrius docker</h3>
+            </div>
+            <p>Gera automaticamente um <code>Dockerfile</code> otimizado e um <code>docker-compose.yml</code> pronto para ser executado.</p>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Gerar Docker para React</span>
+                <button class="copy-code-btn" onclick="copyText('syrius docker --type react')">Copiar</button>
+              </div>
+              <pre><code>syrius docker --type react</code></pre>
+            </div>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Gerar Docker para Node.js / Express</span>
+                <button class="copy-code-btn" onclick="copyText('syrius docker --type node --port 4000')">Copiar</button>
+              </div>
+              <pre><code>syrius docker --type node --port 4000</code></pre>
+            </div>
+          </article>
+
+          <!-- CI/CD -->
+          <article id="doc-ci" class="doc-block">
+            <div class="doc-block-header">
+              <span class="doc-category">DevOps</span>
+              <h3>syrius ci</h3>
+            </div>
+            <p>Cria um arquivo de pipeline de integração contínua do GitHub Actions em <code>.github/workflows/ci.yml</code> com etapas de instalação, lint, testes e build.</p>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Gerar Pipeline GitHub Actions</span>
+                <button class="copy-code-btn" onclick="copyText('syrius ci')">Copiar</button>
+              </div>
+              <pre><code>syrius ci</code></pre>
+            </div>
+          </article>
+
+          <!-- PWA -->
+          <article id="doc-pwa" class="doc-block">
+            <div class="doc-block-header">
+              <span class="doc-category">PWA</span>
+              <h3>syrius pwa generate</h3>
+            </div>
+            <p>Configura o Service Worker, Web App Manifest e Favicons básicos para transformar seu site em um PWA instalável.</p>
+
+            <div class="code-box">
+              <div class="code-header">
+                <span>Gerar Arquivos PWA</span>
+                <button class="copy-code-btn" onclick="copyText('syrius pwa generate --name MinhaAppPWA')">Copiar</button>
+              </div>
+              <pre><code>syrius pwa generate --name "MinhaAppPWA"</code></pre>
+            </div>
+          </article>
 
         </div>
-    </main>
+      </div>
+    </section>
 
-    <footer>
-        <address id="contato">
-            <p>Copyright &copy; 2022 - by Yago Victor</p>
-                <a href="https://www.linkedin.com/in/yago-victor-0892481b4/" class="slub linkedin" target="_blank"> 
-                    <img src="imgs/linkedin_white.png" alt="logo Linkedin" class="logo">
-                    Yago Victor 
-                </a>
-                <br>
-                <a href="https://github.com/Intern-Yago" class="slub github" target="_blank">
-                    <img src="imgs/git_white.png" alt="logo Github" class="logo git">
-                    Intern-Yago
-                </a>
-                <br> 
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&tf=1&to=yago.commercial@gmail.com" target="_blank">
-                    <img src="imgs/gmail_white.png" alt="logo Gmail" class="logo gmail">
-                    yago.commercial@gmail.com
-                </a>
-        </address>
-    </footer>
-    <a href="#" class="arrow-top">
-        <!--! Font Awesome Pro 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
-            <path d="M214.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 109.3V480c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128z"/>
-        </svg>
-    </a>
-    <script src="./scripts.js"></script>
+    <!-- INTERACTIVE PLAYGROUND SIMULATOR -->
+    <section id="playground" class="playground-section">
+      <div class="section-header">
+        <h2 class="section-title">Playground Interativo</h2>
+        <p class="section-subtitle">Monte e simule o seu comando em tempo real antes de rodar no terminal.</p>
+      </div>
+
+      <div class="playground-container">
+        <div class="playground-controls">
+          <div class="control-group">
+            <label for="pg-category">Categoria</label>
+            <select id="pg-category" onchange="updatePlayground()">
+              <option value="react">React Component/Page</option>
+              <option value="docker">Docker Setup</option>
+              <option value="git">Git Files</option>
+              <option value="web">Webpage Template</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="pg-name">Nome do Recurso</label>
+            <input type="text" id="pg-name" value="UserProfile" oninput="updatePlayground()">
+          </div>
+
+          <div class="control-group" id="pg-ts-group">
+            <label for="pg-ts">Usar TypeScript?</label>
+            <select id="pg-ts" onchange="updatePlayground()">
+              <option value="true">Sim (--ts)</option>
+              <option value="false">Não (JavaScript)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="playground-output">
+          <div class="terminal-header">
+            <span class="terminal-title">Simulação de Execução</span>
+            <button class="copy-code-btn" id="pg-copy-btn" onclick="copyPlaygroundCmd()">Copiar Comando</button>
+          </div>
+          <div class="terminal-body" id="pg-terminal">
+            <!-- Simulated output populated dynamically -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <img src="imgs/logoSF.png" alt="Syrius Logo" class="footer-logo">
+        <div>
+          <h3>Syrius CLI</h3>
+          <p>Automação e geração rápida de arquivos para desenvolvedores.</p>
+        </div>
+      </div>
+
+      <div class="footer-contacts">
+        <h4>Desenvolvido por Yago Victor</h4>
+        <div class="social-links">
+          <a href="https://github.com/Intern-Yago" target="_blank" rel="noopener" class="social-btn">
+            <img src="imgs/git_white.png" alt="GitHub"> GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/yago-victor-0892481b4/" target="_blank" rel="noopener" class="social-btn">
+            <img src="imgs/linkedin_white.png" alt="LinkedIn"> LinkedIn
+          </a>
+          <a href="mailto:yago.commercial@gmail.com" class="social-btn">
+            <img src="imgs/gmail_white.png" alt="Email"> Email
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>Copyright &copy; 2026 — Licença MIT. Syrius CLI por Intern-Yago.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll to Top Arrow -->
+  <button id="arrow-top" class="arrow-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao topo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20" height="20" fill="currentColor">
+      <path d="M214.6 9.4c-12.5-12.5-32.8-12.5-45.3 0l-128 128c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L160 109.3V480c0 17.7 14.3 32 32 32s32-14.3 32-32V109.3l73.4 73.4c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3l-128-128z"/>
+    </svg>
+  </button>
+
+  <script src="./scripts.js"></script>
 </body>
 </html>

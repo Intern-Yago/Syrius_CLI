@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  <%= props.name || 'app' %>:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "<%= props.port || 3000 %>:<%= props.port || 3000 %>"
+    environment:
+      - NODE_ENV=production
+    restart: always

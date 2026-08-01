@@ -1,6 +1,6 @@
 module.exports = {
-  name: 'generate:page',
-  alias: ['gp', 'page', 'p'],
+  name: 'page',
+  alias: ['gp', 'p'],
   description: 'Cria uma nova página React (JS/TS)',
   run: async (toolbox) => {
     const { parameters, createComponent } = toolbox
